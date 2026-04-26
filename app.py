@@ -267,7 +267,9 @@ def _pipeline_monitor_fragment():
             st.session_state["last_analyzed_slug"] = p_meta.get("slug", "")
             st.session_state["completed_slug"]      = p_meta.get("slug", "")
             p_reg["saved"] = True
-            # 사이드바 주차 목록 갱신을 위해 전체 앱 1회 재실행
+            # 분석 완료 후 업로드 파일 메모리 해제 (UploadedFile + DataFrame)
+            p_reg["result"] = None
+            st.session_state["uploader_key"] = st.session_state.get("uploader_key", 0) + 1
             st.rerun(scope="app")
 
         date_label = p_meta.get("date_label") or p_meta.get("slug", "")
