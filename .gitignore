@@ -1,0 +1,32 @@
+# 가상환경
+.venv/
+
+# 분석 데이터 (S3에서 관리)
+data/
+
+# 임시/출력 폴더
+input/
+output/
+
+# Python 캐시
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 환경변수
+.env
+*.env
+
+# 임시 파일
+_tmp_*.txt
+_patch_*.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
