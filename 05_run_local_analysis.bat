@@ -15,6 +15,20 @@ if not exist ".venv\Scripts\activate.bat" (
     exit /b 1
 )
 
+rem Load AWS credentials from .env file
+if exist ".env" (
+    for /f "usebackq tokens=1,2 delims==" %%a in (".env") do (
+        set "%%a=%%b"
+    )
+    echo [OK] AWS credentials loaded from .env
+) else (
+    echo [ERROR] .env file not found.
+    echo         Please create .env file based on .env.example
+    echo         with your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+    pause
+    exit /b 1
+)
+
 call .venv\Scripts\activate.bat
 
 echo Open browser: http://localhost:8502
